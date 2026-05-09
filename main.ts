@@ -229,7 +229,7 @@ let steak = sprites.create(img`
     . . . . . . . . . e e e . . . . 
     `, SpriteKind.Food)
 steak.setPosition(136, 58)
-steak.setVelocity(50, 50)
+steak.setVelocity(40, 40)
 steak.setStayInScreen(true)
 steak.setBounceOnWall(true)
 game.onUpdateInterval(2000, function () {
