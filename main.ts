@@ -18,6 +18,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, mySprite, -100, 0)
     info.changeScoreBy(-5)
+    music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.UntilDone)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
@@ -38,22 +39,27 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         `, mySprite, -50, 0)
+    music.play(music.melodyPlayable(music.pewPew), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Food, function (sprite, otherSprite) {
     sprites.destroy(sprite)
     info.changeLifeBy(-1)
+    music.play(music.melodyPlayable(music.powerDown), music.PlaybackMode.UntilDone)
 })
 info.onScore(100, function () {
     game.showLongText("You Win! press q to play again", DialogLayout.Bottom)
     game.reset()
+    music.play(music.melodyPlayable(music.jumpDown), music.PlaybackMode.UntilDone)
 })
 info.onScore(0, function () {
     info.startCountdown(0)
+    music.play(music.melodyPlayable(music.wawawawaa), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     sprites.destroy(otherSprite)
     sprites.destroy(sprite)
     info.changeScoreBy(1)
+    music.play(music.melodyPlayable(music.zapped), music.PlaybackMode.UntilDone)
 })
 let ahhhh: Sprite = null
 let projectile: Sprite = null
